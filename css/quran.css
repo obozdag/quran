@@ -1,8 +1,4 @@
 @font-face {
-	font-family:"Roboto";
-	src:url(fonts/roboto.ttf);
-}
-@font-face {
 	font-family:"Hamdullah";
 	src:url(fonts/hamdullah.ttf);
 }
@@ -102,11 +98,17 @@ i {
 	z-index: 100;
 }
 .sajdah {
-	color: white;
-	background-color: var(--set-color);
-	border-radius: var(--brs);
+	/*color: white;*/
+	/*background-color: var(--set-color);*/
+	/*border-radius: var(--brs);*/
 	padding-left: 1rem;
 	padding-right: 1rem;
+}
+.sajdah:after {
+	content: 'k';
+	font-family: 'rb-quran';
+	color: var(--set-color);
+	margin-right: 1rem;
 }
 .basmala {
 	font-family: var(--set-font-family);
