@@ -98,17 +98,14 @@ i {
 	z-index: 100;
 }
 .sajdah {
-	/*color: white;*/
-	/*background-color: var(--set-color);*/
-	/*border-radius: var(--brs);*/
-	padding-left: 1rem;
-	padding-right: 1rem;
+	color: var(--set-color);
 }
 .sajdah:after {
 	content: 'k';
+	display: inline-block;
 	font-family: 'rb-quran';
 	color: var(--set-color);
-	margin-right: 1rem;
+	margin-right: 5px;
 }
 .basmala {
 	font-family: var(--set-font-family);
