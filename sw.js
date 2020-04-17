@@ -43,6 +43,6 @@ self.addEventListener('fetch', evt => {
 	evt.respondWith(
 		caches.match(evt.request).then(
 			cacheResponse => {
-				return fetch(evt.request) || cacheResponse;
+				return cacheResponse || fetch(evt.request);
 		}));
 });
