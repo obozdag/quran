@@ -1,20 +1,3 @@
-function loading(load = true)
-{
-	let loadingOverlay = document.getElementById('loading-overlay');
-
-	if(load)
-	{
-		loadingOverlay.style.opacity = '1';
-		loadingOverlay.style.visibility = 'visible';
-	}
-	else
-	{
-		loadingOverlay.style.opacity = '0';
-		loadingOverlay.style.visibility = 'hidden';
-	}
-
-}
-
 window.onload = ()=>{
 
 	loading(false);
@@ -190,7 +173,7 @@ window.onload = ()=>{
 
 	function restoreSettings()
 	{
-		// Set bookmark
+		// Restore bookmark
 		if (localStorage.getItem('bookmarkTarget'))
 		{
 			bookmarkTarget = localStorage.getItem('bookmarkTarget');
@@ -199,6 +182,7 @@ window.onload = ()=>{
 			gotoBookmark(bookmarkTarget);
 		}
 
+		// Restore language
 		if (localStorage.getItem('language'))
 		{
 			language = localStorage.getItem('language');
@@ -206,7 +190,7 @@ window.onload = ()=>{
 			setLanguage(language);
 		}
 
-		// Set font family
+		// Restore font family
 		if (localStorage.getItem('fontFamily'))
 		{
 			fontFamily = localStorage.getItem('fontFamily');
@@ -214,7 +198,7 @@ window.onload = ()=>{
 			setFontFamily(fontFamily);
 		}
 
-		// Set font size
+		// Restore font size
 		if (localStorage.getItem('fontSize'))
 		{
 			fontSize = localStorage.getItem('fontSize');
@@ -222,7 +206,7 @@ window.onload = ()=>{
 			setFontSize(fontSize);
 		}
 
-		// Set color
+		// Restore color
 		if (localStorage.getItem('color'))
 		{
 			color = localStorage.getItem('color');
@@ -230,7 +214,7 @@ window.onload = ()=>{
 			setColor(color);
 		}
 
-		// Set background color
+		// Restore background color
 		if (localStorage.getItem('bgColor'))
 		{
 			bgColor = localStorage.getItem('bgColor');
@@ -271,7 +255,7 @@ window.onload = ()=>{
 		}
 	}
 
-	function setLabels(language)
+	async function setLabels(language)
 	{
 		suraListLabel.textContent       = translations[language][suraListLabel.id];
 		suraShortcutsLabel.textContent  = translations[language][suraShortcutsLabel.id];
@@ -284,7 +268,17 @@ window.onload = ()=>{
 		languageListLabel.textContent   = translations[language][languageListLabel.id];
 		gotoPageBtn.textContent         = translations[language][gotoPageBtn.id];
 		resetBtn.textContent            = translations[language][resetBtn.id];
-		programInfoContent.innerHTML    = translations[language]['program_info_content'];
+		programInfoContent.innerHTML    = await getLangHTML(language, 'program_info')
+	}
+
+	async function getLangHTML(language, file)
+	{
+		result = ''
+		path = 'languages/'+language+'/'+file+'.html'
+		await fetch(path).then(data=>data.text()).then(html=>{
+			result = html
+		})
+		return result
 	}
 
 	function fillSelects()
@@ -369,22 +363,18 @@ window.onload = ()=>{
 		closeNavs();
 	}
 
-	function setFontSize(fontSize)
+	async function setFontSize(fontSize)
 	{
-		loading(true);
-		document.documentElement.style.setProperty('--set-font-size', fontSize);
+		document.documentElement.style.setProperty('--set-font-size', fontSize)
 		localStorage.setItem('fontSize', fontSize);
 		closeNavs();
-		loading(false);
 	}
 
 	function setFontFamily(fontFamily)
 	{
-		loading(true);
 		document.documentElement.style.setProperty('--set-font-family', fontFamily);
 		localStorage.setItem('fontFamily', fontFamily);
 		closeNavs();
-		loading(false);
 	}
 
 	function resetSettings()
@@ -487,3 +477,20 @@ window.onload = ()=>{
 		window.scrollBy(0, -navTop.offsetHeight);
 	}
 };
+
+function loading(load = true, opacity = 1)
+{
+	let loadingOverlay = document.getElementById('loading-overlay');
+
+	if(load)
+	{
+		loadingOverlay.style.opacity = opacity;
+		loadingOverlay.style.visibility = 'visible';
+	}
+	else
+	{
+		loadingOverlay.style.opacity = '0';
+		loadingOverlay.style.visibility = 'hidden';
+	}
+
+}
