@@ -26,6 +26,8 @@ var staticContentToCache = [
 	'/js/lang.js',
 	'/js/settings.js',
 	'/js/quran.js',
+	'/languages/en/program_info.html',
+	'/languages/tr/program_info.html',
 ];
 
 // Installing Service Worker
