@@ -4,38 +4,38 @@ window.onload = ()=>{
 
 	// Define elements
 	let bgColorList         = document.getElementById('bg_color_list');
-	let bookmarkContainer   = document.getElementById('bookmark-container');
-	let bookmarkIcon        = document.getElementById('bookmark-icon');
-	let bottomBtn           = document.getElementById('bottom-btn');
-	let closeNavLeftBtn     = document.getElementById('close-nav-left');
-	let closeNavRightBtn    = document.getElementById('close-nav-right');
-	let closePopupBtn       = document.getElementById('close-popup-btn');
+	let bookmarkContainer   = document.getElementById('bookmark_container');
+	let bookmarkIcon        = document.getElementById('bookmark_icon');
+	let bottomBtn           = document.getElementById('bottom_btn');
+	let closeNavLeftBtn     = document.getElementById('close_nav_left');
+	let closeNavRightBtn    = document.getElementById('close_nav_right');
+	let closePopupBtn       = document.getElementById('close_popup_btn');
 	let colorList           = document.getElementById('color_list');
 	let fontFamilyList      = document.getElementById('font_family_list');
 	let fontSizeList        = document.getElementById('font_size_list');
 	let gotoPageBtn         = document.getElementById('goto_page_btn');
-	let juzList             = document.getElementById('juz-list');
+	let juzList             = document.getElementById('juz_list');
 	let languageList        = document.getElementById('language_list');
-	let navLeft             = document.getElementById('nav-left');
-	let navRight            = document.getElementById('nav-right');
-	let navTop              = document.getElementById('nav-top');
-	let openNavLeftBtn      = document.getElementById('open-nav-left');
-	let openNavRightBtn     = document.getElementById('open-nav-right');
-	let pageNo              = document.getElementById('page-no');
-	let programInfoBtn      = document.getElementById('program-info-btn');
-	let programInfoContent  = document.getElementById('program-info-content');
-	let programInfoPopup    = document.getElementById('program-info-popup');
-	let quranVerses         = document.getElementById('quran-verses');
+	let navLeft             = document.getElementById('nav_left');
+	let navRight            = document.getElementById('nav_right');
+	let navTop              = document.getElementById('nav_top');
+	let openNavLeftBtn      = document.getElementById('open_nav_left');
+	let openNavRightBtn     = document.getElementById('open_nav_right');
+	let pageNo              = document.getElementById('page_no');
+	let programInfoBtn      = document.getElementById('program_info_btn');
+	let programInfoContent  = document.getElementById('program_info_content');
+	let programInfoPopup    = document.getElementById('program_info_popup');
+	let quranVerses         = document.getElementById('quran_verses');
 	let resetBtn            = document.getElementById('reset_btn');
-	let suraList            = document.getElementById('sura-list');
-	let topBtn              = document.getElementById('top-btn');
+	let suraList            = document.getElementById('sura_list');
+	let topBtn              = document.getElementById('top_btn');
 
 	// Anchors and infos in quran
 	let juzAnchors          = document.querySelectorAll('.ca');
 	let pageAnchors         = document.querySelectorAll('.pa');
 	let pageInfoBtns        = document.querySelectorAll('.ib');
 	let pageInfos           = document.querySelectorAll('.pi');
-	let suraShortcuts       = document.querySelectorAll('.sura-shortcut');
+	let suraShortcuts       = document.querySelectorAll('.sura_shortcut');
 
 	// Labels
 	let bgColorListLabel    = document.getElementById('bg_color_list_label');
@@ -255,7 +255,7 @@ window.onload = ()=>{
 		}
 	}
 
-	async function setLabels(language)
+	function setLabels(language)
 	{
 		suraListLabel.textContent       = translations[language][suraListLabel.id];
 		suraShortcutsLabel.textContent  = translations[language][suraShortcutsLabel.id];
@@ -268,17 +268,6 @@ window.onload = ()=>{
 		languageListLabel.textContent   = translations[language][languageListLabel.id];
 		gotoPageBtn.textContent         = translations[language][gotoPageBtn.id];
 		resetBtn.textContent            = translations[language][resetBtn.id];
-		programInfoContent.innerHTML    = await getLangHTML(language, 'program_info')
-	}
-
-	async function getLangHTML(language, file)
-	{
-		result = ''
-		path = 'languages/'+language+'/'+file+'.html'
-		await fetch(path).then(data=>data.text()).then(html=>{
-			result = html
-		})
-		return result
 	}
 
 	function fillSelects()
@@ -425,11 +414,22 @@ window.onload = ()=>{
 		programInfoPopup.classList.remove('open');
 	}
 
-	function openInfoPopup()
+	async function openInfoPopup()
 	{
 		navLeft.classList.remove('open');
 		navRight.classList.remove('open');
+		programInfoContent.innerHTML = await fetchLangHTML(currentLanguage, 'program_info')
 		programInfoPopup.classList.toggle('open');
+	}
+
+	async function fetchLangHTML(language, file)
+	{
+		result = ''
+		path = 'languages/'+language+'/'+file+'.html'
+		await fetch(path).then(data=>data.text()).then(html=>{
+			result = html
+		})
+		return result
 	}
 
 	function closeInfoPopup()
@@ -440,13 +440,13 @@ window.onload = ()=>{
 	function quranToTop()
 	{
 		closeNavs();
-		document.getElementById('quran-container').scrollIntoView();
+		document.getElementById('quran_container').scrollIntoView();
 	}
 
 	function quranToBottom()
 	{
 		closeNavs();
-		document.getElementById('quran-container').scrollIntoView({block:'end'});
+		document.getElementById('quran_container').scrollIntoView({block:'end'});
 	}
 
 	function suraToTop()
@@ -480,7 +480,7 @@ window.onload = ()=>{
 
 function loading(load = true, opacity = 1)
 {
-	let loadingOverlay = document.getElementById('loading-overlay');
+	let loadingOverlay = document.getElementById('loading_overlay');
 
 	if(load)
 	{
