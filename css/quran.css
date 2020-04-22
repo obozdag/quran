@@ -18,6 +18,16 @@
 	font-family:"rb-quran";
 	src:url(fonts/rb_quran.ttf);
 }
+.rb {
+	font-family: 'rb-quran' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	font-size: 1.2rem;
+}
 :root {
 	--ac: black; /* arabic text color */
 	--brs: 5px; /* border radius */
@@ -207,16 +217,6 @@ i {
 }
 .visible {
 	visibility: visible;
-}
-.rb {
-	font-family: 'rb-quran' !important;
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	font-size: 1.2rem;
 }
 /*Page bookmark*/
 #bookmark {
