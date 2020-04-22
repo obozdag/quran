@@ -145,16 +145,17 @@ window.onload = ()=>{
 		pageNo.addEventListener('keyup', function(e){if (e.keyCode == 13) pageToTop()});
 		gotoPageBtn.addEventListener('click', pageToTop);
 
-		// To quran top
+		// Quran to top
 		topBtn.addEventListener('click', quranToTop);
 
-		// To quran bottom
+		// Quran to bottom
 		bottomBtn.addEventListener('click', quranToBottom);
 
 		// Clean bookmark
 		bookmarkIcon.addEventListener('click', removeBookmark);
 
 		// Program info
+		programInfoPopup.addEventListener('click', closeInfoPopup);
 		programInfoBtn.addEventListener('click', openInfoPopup);
 		closePopupBtn.addEventListener('click', closeInfoPopup);
 
@@ -169,6 +170,8 @@ window.onload = ()=>{
 		closeNavRightBtn.addEventListener('click', closeNavRight);
 		quranVerses.addEventListener('swipeLeft', openNavRight);
 		navRight.addEventListener('swipeRight', closeNavRight);
+
+		quranVerses.addEventListener('click', closeNavs);
 	}
 
 	function restoreSettings()
@@ -345,9 +348,13 @@ window.onload = ()=>{
 		closeNavs();
 	}
 
-	function setBgColor(bgColor)
+	async function setBgColor(bgColor)
 	{
-		document.documentElement.style.setProperty('--set-bg-color', bgColor);
+		function setProp(){
+			document.documentElement.style.setProperty('--set-bg-color', bgColor);
+		}
+		await setProp()
+		console.log('bg changed')
 		localStorage.setItem('bgColor', bgColor);
 		closeNavs();
 	}

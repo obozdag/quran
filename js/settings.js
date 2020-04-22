@@ -13,8 +13,6 @@ ajza = {}; for(i=1; i<=30;i++){ajza[i] = i;};
 fontFamilies  = {
 	'Hamdullah'  : 'Hamdullah',
 	'Lateef'     : 'Lateef',
-	'Saleem'     : 'Saleem',
-	'Seherezade' : 'Seherezade',
 };
 
 fontSizes = {
