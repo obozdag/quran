@@ -175,13 +175,16 @@ i {
 .settings {
 	display: grid;
 	grid-template-columns: 30% 60%;
-	grid-gap: 2rem 5px;
+	grid-gap: 20px 5px;
 	align-items: center;
 }
 .settings dt {
 	text-align: right;
 }
 .settings dd {
+}
+.col-2 {
+	grid-column: span 2;
 }
 .settings input,
 .settings select {
@@ -344,6 +347,8 @@ i {
 #sura_list {
 }
 #sura_shortcuts {
+	max-height: 20rem;
+	overflow-y: auto;
 }
 #sura_shortcuts_label {
 	margin-bottom: 1rem;
@@ -353,7 +358,7 @@ i {
 	grid-template-columns: 3fr 2fr;
 	grid-gap: 5px;
 	align-items: center;
-	margin-bottom: 1.5rem;
+	margin-bottom: 1rem;
 	cursor: pointer;
 }
 footer {
