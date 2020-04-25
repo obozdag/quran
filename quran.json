@@ -6,7 +6,6 @@
 	"display": "fullscreen",
 	"background_color": "#008b8b",
 	"theme_color": "#008b8b",
-	"orientation": "portrait-primary",
 	"icons": [
 		{
 			"src": "/css/icons/quran_72x72.png",
