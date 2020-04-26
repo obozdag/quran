@@ -45,9 +45,13 @@
 	box-sizing: border-box;
 }
 html {
+	height: 100%;
 	font-size: 16px;
 	font-family: sans-serif;
 	/*scroll-behavior: smooth;*/
+}
+body {
+	height: 100%;
 }
 ul {
 	list-style: none;
@@ -125,9 +129,9 @@ i {
 #nav_left, #nav_right {
 	position: fixed;
 	top: var(--nth);
+	bottom: 0;
 	width: 70%;
 	max-width: 400px;
-	height: 100vh;
 	margin: 0;
 	padding: 3rem 1rem;
 	background-color: var(--nsbc);
@@ -173,18 +177,9 @@ i {
 	text-align: center;
 }
 .settings {
-	display: grid;
-	grid-template-columns: 30% 60%;
-	grid-gap: 20px 5px;
-	align-items: center;
-}
-.settings dt {
-	text-align: right;
-}
-.settings dd {
-}
-.col-2 {
-	grid-column: span 2;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 .settings input,
 .settings select {
@@ -195,6 +190,24 @@ i {
 	border-radius: var(--brs);
 	font-size: 1rem;
 	outline: none;
+}
+.settings .row {
+	display: grid;
+	grid-template-columns: 40% 55%;
+	grid-gap: 5px;
+	margin-bottom: 1rem;
+}
+#sura_shortcuts_row {
+	overflow-y: auto;
+}
+#sura_shortcuts {
+	padding: 1rem;
+	overflow-y: auto;
+	border: 1px solid rgba(200, 200, 200, .5);
+}
+.sura_shortcut {
+	margin-bottom: 1rem;
+	cursor: pointer;
 }
 .goto_page_container {
 	display: grid;
@@ -239,14 +252,13 @@ i {
 }
 /*Sura names*/
 .sn {
+	margin-top: 1rem;
 	padding: 1rem;
-	font-family: sans-serif;
-	font-size: 18px;
+	font: normal 1rem sans-serif;
 	text-align: center;
-	color: var(--set-color);
+	color: gray;
 	page-break-inside: avoid;
 	direction: ltr;
-	margin-top: 1rem;
 }
 /*Verse numbers*/
 .vn {
@@ -343,23 +355,6 @@ i {
 }
 .ul.icons li {
 	margin-bottom: .8rem;
-}
-#sura_list {
-}
-#sura_shortcuts {
-	max-height: 20rem;
-	overflow-y: auto;
-}
-#sura_shortcuts_label {
-	margin-bottom: 1rem;
-}
-.sura_shortcut {
-	display: grid;
-	grid-template-columns: 3fr 2fr;
-	grid-gap: 5px;
-	align-items: center;
-	margin-bottom: 1rem;
-	cursor: pointer;
 }
 footer {
 	display: flex;
