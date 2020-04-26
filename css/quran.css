@@ -181,6 +181,12 @@ i {
 	display: flex;
 	flex-direction: column;
 }
+.settings .row {
+	display: grid;
+	grid-template-columns: 40% 55%;
+	grid-gap: 5px;
+	margin-bottom: 1rem;
+}
 .settings input,
 .settings select {
 	width: 100%;
@@ -191,11 +197,9 @@ i {
 	font-size: 1rem;
 	outline: none;
 }
-.settings .row {
-	display: grid;
-	grid-template-columns: 40% 55%;
-	grid-gap: 5px;
-	margin-bottom: 1rem;
+.settings label {
+	text-align: right;
+	line-height: 2rem;
 }
 #sura_shortcuts_row {
 	overflow-y: auto;
