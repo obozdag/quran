@@ -32,7 +32,7 @@
 		<i class="rb close_btn right" id="close_nav_left">c</i>
 		<div class="settings">
 			<div class="row">
-				<label id="sura_list_label" class="text-right"></label>
+				<label id="sura_list_label"></label>
 				<select id="sura_list">
 					<option></option>
 					<option value="87">A’lâ 87</option>
@@ -152,31 +152,31 @@
 				</select>
 			</div>
 			<div class="row">
-				<label id="juz_list_label" class="text-right"></label>
+				<label id="juz_list_label"></label>
 				<select id="juz_list">
 					<option></option>
 				</select>
 			</div>
 			<div class="row">
-				<label id="page_input_label" class="text-right"></label>
+				<label id="page_input_label"></label>
 				<span class="goto_page_container">
 					<input type="text" id="page_no" size="3" min="0" max="604" maxlength="3" pattern="\d{1,3}" title="Sayfa numarası 0-604">
 					<button type="button" class="btn btn_nav" id="goto_page_btn"></button>
 				</span>
 			</div>
 			<div class="row" id="sura_shortcuts_row">
-				<label id="sura_shortcuts_label" class="text-right"></label>
+				<label id="sura_shortcuts_label"></label>
 				<div id="sura_shortcuts">
 					<ul>
-						<li class="sura_shortcut" data-sura-id="36"><span>36 Yâsin</span></li>
-						<li class="sura_shortcut" data-sura-id="44"><span>44 Duhân</span></li>
 						<li class="sura_shortcut" data-sura-id="48"><span>48 Fetih</span></li>
+						<li class="sura_shortcut" data-sura-id="36"><span>36 Yâsin</span></li>
 						<li class="sura_shortcut" data-sura-id="55"><span>55 Rahmân</span></li>
 						<li class="sura_shortcut" data-sura-id="56"><span>56 Vâkıa</span></li>
-						<li class="sura_shortcut" data-sura-id="62"><span>62 Cum’a</span></li>
 						<li class="sura_shortcut" data-sura-id="67"><span>67 Mülk</span></li>
+						<li class="sura_shortcut" data-sura-id="78"><span>78 Nebe</span></li>
+						<li class="sura_shortcut" data-sura-id="44"><span>44 Duhân</span></li>
+						<li class="sura_shortcut" data-sura-id="62"><span>62 Cum’a</span></li>
 						<li class="sura_shortcut" data-sura-id="75"><span>75 Kıyamet</span></li>
-						<li class="sura_shortcut" data-sura-id="78"><span>78 Nebe’</span></li>
 						<li class="sura_shortcut" data-sura-id="98"><span>98 Beyyine</span></li>
 					</ul>
 				</div>
@@ -185,32 +185,32 @@
 	</nav>
 	<nav id="nav_right" class="nav-side">
 		<i class="rb close_btn left" id="close_nav_right">c</i>
-		<dl class="settings">
-			<dt id="font_family_list_label"></dt>
-			<dd>
+		<div class="settings">
+			<div class="row">
+				<label id="font_family_list_label"></label>
 				<select id="font_family_list"></select>
-			</dd>
-			<dt id="font_size_list_label"></dt>
-			<dd>
+			</div>
+			<div class="row">
+				<label id="font_size_list_label"></label>
 				<select id="font_size_list"></select>
-			</dd>
-			<dt id="color_list_label"></dt>
-			<dd>
+			</div>
+			<div class="row">
+				<label id="color_list_label"></label>
 				<select id="color_list"></select>
-			</dd>
-			<dt id="bg_color_list_label"></dt>
-			<dd>
+			</div>
+			<div class="row">
+				<label id="bg_color_list_label"></label>
 				<select id="bg_color_list"></select>
-			</dd>
-			<dt id="language_list_label"></dt>
-			<dd>
+			</div>
+			<div class="row">
+				<label id="language_list_label"></label>
 				<select id="language_list"></select>
-			</dd>
-			<dt></dt>
-			<dd>
+			</div>
+			<div class="row">
+				<label></label>
 				<button type="button" class="btn btn_nav" id="reset_btn"></button>
-			</dd>
-		</dl>
+			</div>
+		</div>
 		<div id="nav_loading">
 			<img src="css/icons/loading.gif">
 		</div>
