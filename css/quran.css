@@ -1,22 +1,17 @@
 @font-face {
 	font-family:"Hamdullah";
 	src:url(fonts/hamdullah.ttf);
+	font-display: block;
 }
 @font-face {
 	font-family:"Lateef";
 	src:url(fonts/lateef.ttf);
-}
-@font-face {
-	font-family:"Saleem";
-	src:url(fonts/saleem.ttf);
-}
-@font-face {
-	font-family:"Seherezade";
-	src:url(fonts/seherezade.ttf);
+	font-display: block;
 }
 @font-face {
 	font-family:"rb-quran";
 	src:url(fonts/rb_quran.ttf);
+	font-display: block;
 }
 .rb {
 	font-family: 'rb-quran' !important;
@@ -415,7 +410,7 @@ footer a {
 #loading_image {
 }
 #nav_loading {
-	display: none;
+	display: block;
 }
 @media print {
 	.container {
