@@ -17,6 +17,7 @@ window.onload = ()=>{
 	let juzList             = document.getElementById('juz_list');
 	let languageList        = document.getElementById('language_list');
 	let navLeft             = document.getElementById('nav_left');
+	let navLoading          = document.getElementById('nav_loading');
 	let navRight            = document.getElementById('nav_right');
 	let navTop              = document.getElementById('nav_top');
 	let openNavLeftBtn      = document.getElementById('open_nav_left');
@@ -350,11 +351,7 @@ window.onload = ()=>{
 
 	async function setBgColor(bgColor)
 	{
-		function setProp(){
-			document.documentElement.style.setProperty('--set-bg-color', bgColor);
-		}
-		await setProp()
-		console.log('bg changed')
+		document.documentElement.style.setProperty('--set-bg-color', bgColor);
 		localStorage.setItem('bgColor', bgColor);
 		closeNavs();
 	}
@@ -368,9 +365,23 @@ window.onload = ()=>{
 
 	function setFontFamily(fontFamily)
 	{
+		settingLoading(true)
 		document.documentElement.style.setProperty('--set-font-family', fontFamily);
 		localStorage.setItem('fontFamily', fontFamily);
 		closeNavs();
+		settingLoading(false)
+	}
+
+	function settingLoading(showLoading)
+	{
+		if(showLoading)
+		{
+			navLoading.classList.add('open')
+		}
+		else
+		{
+			navLoading.classList.remove('open')
+		}
 	}
 
 	function resetSettings()
@@ -458,20 +469,24 @@ window.onload = ()=>{
 
 	function suraToTop()
 	{
+		juzList.selectedIndex = 0;
+		pageNo.value = null;
 		closeNavs();
-		document.getElementById('sura_'+suraList.value).scrollIntoView();
+		document.getElementById('S'+suraList.value).scrollIntoView();
 		window.scrollBy(0, -navTop.offsetHeight);
 	}
 
 	function suraShortcutToTop()
 	{
 		closeNavs();
-		document.getElementById('sura_'+this.dataset.suraId).scrollIntoView();
+		document.getElementById('S'+this.dataset.suraId).scrollIntoView();
 		window.scrollBy(0, -navTop.offsetHeight);
 	}
 
 	function juzToTop()
 	{
+		suraList.selectedIndex = 0;
+		pageNo.value = null;
 		closeNavs();
 		document.getElementById('j'+juzList.value).scrollIntoView();
 		window.scrollBy(0, -navTop.offsetHeight);
@@ -479,6 +494,8 @@ window.onload = ()=>{
 
 	function pageToTop()
 	{
+		suraList.selectedIndex = 0;
+		juzList.selectedIndex = 0;
 		closeNavs();
 		document.getElementById('p'+pageNo.value).scrollIntoView();
 		window.scrollBy(0, -navTop.offsetHeight);
