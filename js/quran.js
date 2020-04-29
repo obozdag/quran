@@ -29,6 +29,7 @@ window.onload = ()=>{
 	let quranVerses         = document.getElementById('quran_verses');
 	let resetBtn            = document.getElementById('reset_btn');
 	let suraList            = document.getElementById('sura_list');
+	let suraShortcutList    = document.getElementById('sura_shortcuts');
 	let topBtn              = document.getElementById('top_btn');
 
 	// Anchors and infos in quran
@@ -36,7 +37,7 @@ window.onload = ()=>{
 	let pageAnchors         = document.querySelectorAll('.pa');
 	let pageInfoBtns        = document.querySelectorAll('.ib');
 	let pageInfos           = document.querySelectorAll('.pi');
-	let suraShortcuts       = document.querySelectorAll('.sura_shortcut');
+	// let suraShortcuts       = document.querySelectorAll('#sura_shortcuts li');
 
 	// Labels
 	let bgColorListLabel    = document.getElementById('bg_color_list_label');
@@ -75,12 +76,14 @@ window.onload = ()=>{
 
 	setLabels(currentLanguage);
 	fillSelects();
+	fillSuras(currentLanguage);
+	fillShortcuts(currentLanguage);
 
 	// Than install event listeners for quick responsiveness then settings if exist
 	installEventListeners();
 	restoreSettings();
 
-	function installEventListeners()
+	async function installEventListeners()
 	{
 		// Language list
 		languageList.addEventListener('change', (e)=>{
@@ -100,7 +103,8 @@ window.onload = ()=>{
 		}
 
 		// Page anchors
-		for(let i=0; i < pageAnchors.length; i++)
+		let pal = pageAnchors.length
+		for(let i=0; i < pal; i++)
 		{
 			pageAnchors[i].addEventListener('click', addBookmark, false);
 		}
@@ -132,12 +136,6 @@ window.onload = ()=>{
 
 		// Sura list
 		suraList.addEventListener('change', suraToTop);
-
-		// Sura shortcuts
-		for(let i=0; i < suraShortcuts.length; i++)
-		{
-			suraShortcuts[i].addEventListener('click', suraShortcutToTop, false);
-		}
 
 		// Juz list
 		juzList.addEventListener('change', juzToTop);
@@ -231,6 +229,9 @@ window.onload = ()=>{
 	{
 		setLabels(language);
 		replaceBookmarksAndInfos(language);
+		fillSuras(language);
+		fillShortcuts(language);
+
 		currentLanguage = language;
 		localStorage.setItem('language', language);
 		closeNavs();
@@ -293,6 +294,32 @@ window.onload = ()=>{
 			option.textContent = text;
 			selectElement.appendChild(option);
 			if (defaultOption == value) selectElement.value = value;
+		}
+	}
+
+	function fillSuras(language)
+	{
+		// First remove list items before adding new ones
+		while(child = suraList.lastChild){suraList.removeChild(child)}
+
+		createOptions(suraList, translations[language]['suras'], null);
+	}
+
+	function fillShortcuts(language)
+	{
+		let listElement = suraShortcutList
+		let listItems   = translations[language]['sura_shortcuts']
+
+		// First remove list items before adding new ones
+		while(child = listElement.lastChild){listElement.removeChild(child)}
+
+		for ([value, text] of Object.entries(listItems))
+		{
+			let listItem = document.createElement('li');
+			listItem.dataset.suraId = value;
+			listItem.textContent = text;
+			listItem.addEventListener('click', ()=>{suraShortcutToTop(listItem)})
+			listElement.appendChild(listItem);
 		}
 	}
 
@@ -472,15 +499,12 @@ window.onload = ()=>{
 		juzList.selectedIndex = 0;
 		pageNo.value = null;
 		closeNavs();
-		document.getElementById('S'+suraList.value).scrollIntoView();
-		window.scrollBy(0, -navTop.offsetHeight);
-	}
 
-	function suraShortcutToTop()
-	{
-		closeNavs();
-		document.getElementById('S'+this.dataset.suraId).scrollIntoView();
-		window.scrollBy(0, -navTop.offsetHeight);
+		if (this.value)
+		{
+			document.getElementById(suraList.value).scrollIntoView();
+			window.scrollBy(0, -navTop.offsetHeight);
+		}
 	}
 
 	function juzToTop()
@@ -488,8 +512,12 @@ window.onload = ()=>{
 		suraList.selectedIndex = 0;
 		pageNo.value = null;
 		closeNavs();
-		document.getElementById('j'+juzList.value).scrollIntoView();
-		window.scrollBy(0, -navTop.offsetHeight);
+
+		if (this.value)
+		{
+			document.getElementById(this.value).scrollIntoView();
+			window.scrollBy(0, -navTop.offsetHeight);
+		}
 	}
 
 	function pageToTop()
@@ -497,9 +525,25 @@ window.onload = ()=>{
 		suraList.selectedIndex = 0;
 		juzList.selectedIndex = 0;
 		closeNavs();
-		document.getElementById('p'+pageNo.value).scrollIntoView();
-		window.scrollBy(0, -navTop.offsetHeight);
+
+		if (parseInt(pageNo.value) >= 0 && parseInt(pageNo.value) <= 604)
+		{
+			document.getElementById('p'+pageNo.value).scrollIntoView();
+			window.scrollBy(0, -navTop.offsetHeight);
+		}
 	}
+
+	function suraShortcutToTop(shortcut)
+	{
+		if (shortcut.dataset.suraId)
+		{
+			document.getElementById(shortcut.dataset.suraId).scrollIntoView();
+			window.scrollBy(0, -navTop.offsetHeight);
+		}
+
+		closeNavs();
+	}
+
 };
 
 function loading(load = true, opacity = 1)

@@ -8,7 +8,7 @@ languages = {
 	'en' : 'English',
 };
 
-ajza = {}; for(i=1; i<=30;i++){ajza[i] = i;};
+ajza = {}; for(i=1; i<=30;i++){ajza['j'+i] = i;};
 
 fontFamilies  = {
 	'Hamdullah'  : 'Hamdullah',
