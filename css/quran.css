@@ -333,7 +333,7 @@ i {
 }
 #program_info_content {
 	max-height: 70vh;
-	margin-top: 2rem;
+	margin-top: 1rem;
 	overflow-y: auto;
 }
 .popup h3, .popup h4 {
@@ -349,8 +349,9 @@ i {
 	list-style-type: disc;
 	color: var(--set-color);
 }
-.ul.icons li {
+.ul li {
 	margin-bottom: .8rem;
+	line-height: 1.4;
 }
 footer {
 	display: flex;
