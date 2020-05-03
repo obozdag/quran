@@ -30,6 +30,7 @@
 	--set-color: brown; /* color to change in settings */ /* SET IN JS */
 	--set-font-family: 'Hamdullah'; /* arabic font family */ /* SET IN JS */
 	--set-font-size: 28px; /* arabic font size */ /* SET IN JS */
+	--theme-color: teal; /* application theme color */
 }
 * {
 	margin: 0;
@@ -389,7 +390,7 @@ footer a {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background-color: teal;
+	background-color: var(--theme-color);
 	z-index: 200;
 	opacity: 1;
 	visibility: visible;
