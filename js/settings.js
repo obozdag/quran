@@ -10,29 +10,11 @@ languages = {
 
 ajza = {}; for(i=1; i<=30;i++){ajza['j'+i] = i;};
 
+fontSizes = {}; for(i=16; i<=64;i+=2){fontSizes[i+'px'] = i;};
+
 fontFamilies  = {
 	'Hamdullah'  : 'Hamdullah',
 	'Lateef'     : 'Lateef',
-};
-
-fontSizes = {
-	'16px' : '16',
-	'18px' : '18',
-	'20px' : '20',
-	'22px' : '22',
-	'24px' : '24',
-	'26px' : '26',
-	'28px' : '28',
-	'30px' : '30',
-	'32px' : '32',
-	'34px' : '34',
-	'36px' : '36',
-	'38px' : '38',
-	'40px' : '40',
-	'42px' : '42',
-	'44px' : '44',
-	'46px' : '46',
-	'48px' : '48',
 };
 
 colors = {
