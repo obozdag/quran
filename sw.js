@@ -1,4 +1,4 @@
-var cacheName = 'quran-v1.9';
+var cacheName = 'EasyQuran v1.91'
 var staticContentToCache = [
 	'index.html',
 	'favicon.ico',
@@ -25,21 +25,29 @@ var staticContentToCache = [
 	'js/quran.js',
 	'languages/en/program_info.html',
 	'languages/tr/program_info.html',
-];
+]
 
 // Installing Service Worker
 self.addEventListener('install', evt => {
-	console.log('Service worker installed.');
 	evt.waitUntil(
 		caches.open(cacheName).then(cache => {
-			staticContentToCache.forEach(function(file){
-				cache.add(file).catch((err)=>{
-					console.error(err)
-				})
-			});
+			return staticContentToCache.forEach(function(file){
+				cache.add(file).catch(err => console.log(err+file))
+			})
 		})
-	);
-});
+		.then(function(){return self.skipWaiting()})
+	)})
+
+// Activating Service Worker
+self.addEventListener('activate', evt => {
+	evt.waitUntil(
+		caches.keys().then(keys => {
+			return Promise.all(keys
+				.filter(key => key !== cacheName)
+				.map(key => caches.delete(key))
+			)
+	}))})
+
 
 // Fetching content using Service Worker
 self.addEventListener('fetch', evt => {
@@ -47,5 +55,5 @@ self.addEventListener('fetch', evt => {
 		caches.match(evt.request).then(
 			cacheResponse => {
 				return cacheResponse || fetch(evt.request);
-		}));
-});
+		}))
+	})
