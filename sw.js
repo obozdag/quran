@@ -2,7 +2,7 @@ var cacheName = 'EasyQuran v1.91'
 var staticContentToCache = [
 	'index.html',
 	'favicon.ico',
-	'css/quran.css',
+	'css/easy_quran.css',
 	'css/fonts/hamdullah.ttf',
 	'css/fonts/lateef.ttf',
 	'css/fonts/rb_icons.ttf',
