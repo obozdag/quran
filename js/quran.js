@@ -1,7 +1,5 @@
 window.onload = ()=>{
 
-	loading(false);
-
 	// Define elements
 	let bgColorList         = document.getElementById('bg_color_list');
 	let bookmarkContainer   = document.getElementById('bookmark_container');
@@ -16,6 +14,7 @@ window.onload = ()=>{
 	let gotoPageBtn         = document.getElementById('goto_page_btn');
 	let juzList             = document.getElementById('juz_list');
 	let languageList        = document.getElementById('language_list');
+	let loadingOverlay      = document.getElementById('loading_overlay');
 	let navLeft             = document.getElementById('nav_left');
 	let navLoading          = document.getElementById('nav_loading');
 	let navRight            = document.getElementById('nav_right');
@@ -28,6 +27,8 @@ window.onload = ()=>{
 	let programInfoPopup    = document.getElementById('program_info_popup');
 	let quranVerses         = document.getElementById('quran_verses');
 	let resetBtn            = document.getElementById('reset_btn');
+	let settingsHeader      = document.getElementById('settings_header');
+	let settingsMessage     = document.getElementById('settings_message');
 	let suraList            = document.getElementById('sura_list');
 	let suraShortcutList    = document.getElementById('sura_shortcuts');
 	let topBtn              = document.getElementById('top_btn');
@@ -50,6 +51,8 @@ window.onload = ()=>{
 	let suraListLabel       = document.getElementById('sura_list_label');
 	let suraShortcutsLabel  = document.getElementById('sura_shortcuts_label');
 
+
+	loading(false);
 
 	// Set current language first
 	if( typeof currentLanguage === 'undefined')
@@ -273,6 +276,8 @@ window.onload = ()=>{
 		languageListLabel.textContent   = translations[language][languageListLabel.id];
 		gotoPageBtn.textContent         = translations[language][gotoPageBtn.id];
 		resetBtn.textContent            = translations[language][resetBtn.id];
+		settingsHeader.textContent      = translations[language][settingsHeader.id];
+		settingsMessage.textContent     = translations[language][settingsMessage.id];
 	}
 
 	function fillSelects()
@@ -367,36 +372,6 @@ window.onload = ()=>{
 				localStorage.removeItem('bookmarkLabel');
 			}
 		}
-	}
-
-	function setColor(color)
-	{
-		document.documentElement.style.setProperty('--set-color', color);
-		localStorage.setItem('color', color);
-		closeNavs();
-	}
-
-	async function setBgColor(bgColor)
-	{
-		document.documentElement.style.setProperty('--set-bg-color', bgColor);
-		localStorage.setItem('bgColor', bgColor);
-		closeNavs();
-	}
-
-	async function setFontSize(fontSize)
-	{
-		document.documentElement.style.setProperty('--set-font-size', fontSize)
-		localStorage.setItem('fontSize', fontSize);
-		closeNavs();
-	}
-
-	function setFontFamily(fontFamily)
-	{
-		settingLoading(true)
-		document.documentElement.style.setProperty('--set-font-family', fontFamily);
-		localStorage.setItem('fontFamily', fontFamily);
-		closeNavs();
-		settingLoading(false)
 	}
 
 	function settingLoading(showLoading)
@@ -544,21 +519,82 @@ window.onload = ()=>{
 		closeNavs();
 	}
 
+	function setColor(color)
+	{
+		document.documentElement.style.setProperty('--set-color', color);
+
+		if (color != defaultColor)
+		{
+			localStorage.setItem('color', color);
+		}
+		else
+		{
+			localStorage.removeItem('color')
+		}
+
+		closeNavs();
+	}
+
+	function setBgColor(bgColor)
+	{
+		document.documentElement.style.setProperty('--set-bg-color', bgColor);
+
+		if (bgColor != defaultBgColor)
+		{
+			localStorage.setItem('bgColor', bgColor);
+		}
+		else
+		{
+			localStorage.removeItem('bgColor')
+		}
+
+		closeNavs();
+	}
+
+	function setFontSize(fontSize)
+	{
+		document.documentElement.style.setProperty('--set-font-size', fontSize)
+
+		if (fontSize != defaultFontSize)
+		{
+			localStorage.setItem('fontSize', fontSize);
+		}
+		else
+		{
+			localStorage.removeItem('fontSize')
+		}
+
+		closeNavs();
+	}
+
+	function setFontFamily(fontFamily)
+	{
+		document.documentElement.style.setProperty('--set-font-family', fontFamily);
+
+		if (fontFamily != defaultFontFamily)
+		{
+			localStorage.setItem('fontFamily', fontFamily);
+		}
+		else
+		{
+			localStorage.removeItem('fontFamily')
+		}
+
+		closeNavs();
+	}
+
+	function loading(load = true, opacity = 1)
+	{
+		if(load)
+		{
+			loadingOverlay.style.opacity = opacity;
+			loadingOverlay.style.visibility = 'visible';
+		}
+		else
+		{
+			loadingOverlay.style.opacity = '0';
+			loadingOverlay.style.visibility = 'hidden';
+		}
+
+	}
 };
-
-function loading(load = true, opacity = 1)
-{
-	let loadingOverlay = document.getElementById('loading_overlay');
-
-	if(load)
-	{
-		loadingOverlay.style.opacity = opacity;
-		loadingOverlay.style.visibility = 'visible';
-	}
-	else
-	{
-		loadingOverlay.style.opacity = '0';
-		loadingOverlay.style.visibility = 'hidden';
-	}
-
-}
