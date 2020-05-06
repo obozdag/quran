@@ -7,15 +7,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-status-bar" content="#008b8b">
 	<meta name="theme-color" content="#008b8b">
+	<link rel="preload" href="css/fonts/hamdullah.ttf" as="font" crossorigin>
+	<link rel="preload" href="css/fonts/rb_icons.ttf" as="font" crossorigin>
 	<link rel="stylesheet" type="text/css" href="css/quran.css">
-	<link rel="apple-touch-icon" href="css/icons/quran_96x96.png">
-	<link rel="manifest" href="quran.json">
+	<link rel="apple-touch-icon" href="css/icons/easy_quran_96x96.png">
+	<link rel="manifest" href="easy_quran.json">
 </head>
 <body>
 	<div id="loading_overlay">
 		<div id="loading_content">
 			<h3>Easy Quran</h3>
-			<p><img id="loading_image" src="css/icons/quran_loading.gif"></p>
+			<p><img id="loading_image" src="css/icons/loading.gif"></p>
 			<p>Loading...</p>
 			<p>quran.fklavye.net</p>
 		</div>
@@ -35,6 +37,7 @@
 				<label id="sura_list_label"></label>
 				<select id="sura_list">
 					<option></option>
+					<!-- <option value="s"></option> -->
 				</select>
 			</div>
 			<div class="row">
@@ -61,6 +64,7 @@
 	</nav>
 	<nav id="nav_right" class="nav-side">
 		<i class="rb close_btn left" id="close_nav_right">c</i>
+		<h4 id="settings_header"></h4>
 		<div class="settings">
 			<div class="row">
 				<label id="font_family_list_label"></label>
@@ -87,14 +91,12 @@
 				<button type="button" class="btn btn_nav" id="reset_btn"></button>
 			</div>
 			<div id="nav_loading" class="nav-loading">
-				<img src="css/icons/loading.gif">
+				<p><small id="settings_message"></small></p>
 			</div>
 		</div>
 	</nav>
 	<div class="container" id="quran_container">
 		<div id="quran_verses" class="arabic">
-			<div class="page">
-			</div>
 			<div class="page">
 				<p class="pip">
 					<i class="ca" id="j1">Cüz 1</i>
@@ -10823,20 +10825,19 @@
 				<i class="vn">(6)</i><i>مِنَ الْجِنَّةِ وَالنَّاسِ</i>
 			</div>
 		</div>
-	</div>
-	<footer><a target="_blank" href="https://github.com/obozdag/quran"><i class="rb logo" title="Easy Quran">a</i> Easy Quran</a></footer>
-	<div class="overlay" id="program_info_popup">
-		<div class="popup">
-			<i id="close_popup_btn" class="rb close_btn right">c</i>
-			<h3><i class="rb logo">a</i> Easy Quran v1.9</h3>
-			<div id="program_info_content">
+		<footer><a target="_blank" href="https://github.com/obozdag/quran"><i class="rb logo" title="Easy Quran">a</i> Easy Quran</a></footer>
+		<div class="overlay" id="program_info_popup">
+			<div class="popup">
+				<i id="close_popup_btn" class="rb close_btn right">c</i>
+				<h3><i class="rb logo">a</i> Easy Quran v1.9</h3>
+				<div id="program_info_content">
+				</div>
 			</div>
 		</div>
-	</div>
-	<script src="js/swipe.js"></script>
-	<script src="js/lang.js"></script>
-	<script src="js/settings.js"></script>
-	<script src="js/quran.js"></script>
-	<script src="app.js"></script>
-</body>
-</html>
+		<script src="js/swipe.js"></script>
+		<script src="js/lang.js"></script>
+		<script src="js/settings.js"></script>
+		<script src="js/quran.js"></script>
+		<script src="app.js"></script>
+	</body>
+	</html>
