@@ -7,11 +7,11 @@
 	src:url(fonts/lateef.ttf);
 }
 @font-face {
-	font-family:"rb-quran";
-	src:url(fonts/rb_quran.ttf);
+	font-family:"rb-icons";
+	src:url(fonts/rb_icons.ttf);
 }
 .rb {
-	font-family: 'rb-quran' !important;
+	font-family: 'rb-icons' !important;
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -110,7 +110,7 @@ i {
 .sajdah:after {
 	content: 'k';
 	display: inline-block;
-	font-family: 'rb-quran';
+	font-family: 'rb-icons';
 	color: var(--set-color);
 	margin-right: 5px;
 }
@@ -259,7 +259,7 @@ i {
 }
 /*Verse numbers*/
 .vn {
-	font-family: 'rb-quran', sans-serif;
+	font-family: 'rb-icons', sans-serif;
 	font-size: .5em;
 	color: var(--set-color);
 }
@@ -413,7 +413,7 @@ footer a {
 #loading_image {
 }
 .nav-loading {
-	display: none;
+	/*display: none;*/
 	transition: all 2s;
 }
 .nav-loading.open {
