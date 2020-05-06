@@ -22,7 +22,7 @@ var staticContentToCache = [
 	'js/swipe.js',
 	'js/lang.js',
 	'js/settings.js',
-	'js/quran.js',
+	'js/easy_quran.js',
 	'languages/en/program_info.html',
 	'languages/tr/program_info.html',
 ]
