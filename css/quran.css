@@ -123,8 +123,8 @@ i {
 	position: fixed;
 	top: var(--nth);
 	bottom: 0;
-	width: 70%;
-	max-width: 400px;
+	width: 75%;
+	max-width: 450px;
 	margin: 0;
 	padding: 3rem 1rem;
 	background-color: var(--nsbc);
@@ -193,6 +193,17 @@ i {
 .settings label {
 	text-align: right;
 	line-height: 2rem;
+}
+#settings_header {
+	margin-bottom: 1rem;
+	padding: .5rem 1rem;
+	border-bottom: 1px solid rgba(200, 200, 200, .5);
+	text-align: center;
+	font-size: 1.2rem;
+}
+#settings_message {
+	display: block;
+	text-align: center;
 }
 #sura_shortcuts_row {
 	overflow-y: auto;
