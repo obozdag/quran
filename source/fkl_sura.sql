@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2020 at 09:43 AM
+-- Generation Time: May 15, 2020 at 03:20 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.9
 
@@ -61,7 +61,7 @@ INSERT INTO `fkl_sura` (`id`, `verses`, `name`, `en`, `eng`, `tr`, `basmala`, `s
 (14, 52, 'إبراهيم', 'Ibrahim', 'Abraham', 'İbrahim', 1, NULL, NULL),
 (15, 99, 'الحجر', 'Al-Hijr', 'The Rock', 'Hicr', 1, NULL, NULL),
 (16, 128, 'النحل', 'An-Nahl', 'The Bee', 'Nahl', 1, 1, NULL),
-(17, 111, 'بني إسرائيل', 'Al-Isra', 'Children of Israel', 'İsrâ', 1, 1, NULL),
+(17, 111, 'الإسراء', 'Al-Isra', 'Night Journey\r\n', 'İsrâ', 1, 1, NULL),
 (18, 110, 'الكهف', 'Al-Kahf', 'The Cave', 'Kehf', 1, NULL, NULL),
 (19, 98, 'مريم', 'Maryam', 'Mary', 'Meryem', 1, 1, NULL),
 (20, 135, 'طه', 'Taha', 'Ta-Ha', 'Tâ-Hâ', 1, NULL, NULL),
