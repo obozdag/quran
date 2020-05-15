@@ -421,18 +421,6 @@ footer a {
  {
 	margin-bottom: 1rem;
 }
-.loader{
-	color:white;
-	fill:white;
-	font-family: 'rb-icons';
-}
-.loader:before{
-	content:"a";
-	position:relative;
-	font-size:1.6em;
-	right:-62px;
-	top:-49px;
-}
 @media print {
 	.container {
 		display: block;
