@@ -34,6 +34,7 @@ window.onload = ()=>{
 	let topBtn              = document.getElementById('top_btn');
 
 	// Anchors and infos in quran
+	let verseAnchors        = document.querySelectorAll('.vn');
 	let juzAnchors          = document.querySelectorAll('.ca');
 	let pageAnchors         = document.querySelectorAll('.pa');
 	let pageInfoBtns        = document.querySelectorAll('.ib');
@@ -94,20 +95,29 @@ window.onload = ()=>{
 		});
 
 		// Page infos
-		for(let i = 0; i < pageInfoBtns.length; i++)
+		let piLength = pageInfoBtns.length
+		for(let i = 0; i < piLength; i++)
 		{
 			pageInfoBtns[i].addEventListener('click', ()=>{pageInfoBtns[i].classList.toggle('open')});
 		}
 
 		// Juz anchors
-		for(let i=0; i < juzAnchors.length; i++)
+		let jaLength = juzAnchors.length
+		for(let i=0; i < jaLength; i++)
 		{
 			juzAnchors[i].addEventListener('click', addBookmark, false);
 		}
 
+		// Verse anchors
+		let vaLength = verseAnchors.length
+		for(let i=0; i < vaLength; i++)
+		{
+			verseAnchors[i].addEventListener('click', addBookmark, false);
+		}
+
 		// Page anchors
-		let pal = pageAnchors.length
-		for(let i=0; i < pal; i++)
+		let paLength = pageAnchors.length
+		for(let i=0; i < paLength; i++)
 		{
 			pageAnchors[i].addEventListener('click', addBookmark, false);
 		}
@@ -331,7 +341,7 @@ window.onload = ()=>{
 	function addBookmark()
 	{
 		bookmarkTarget = this.id;
-		bookmarkLabel  = this.textContent;
+		bookmarkLabel  = bookmarkTarget.startsWith('v') ? this.dataset.label : this.textContent;
 		setBookmark(bookmarkTarget, bookmarkLabel);
 		localStorage.setItem('bookmarkTarget', bookmarkTarget);
 		localStorage.setItem('bookmarkLabel', bookmarkLabel);
@@ -355,7 +365,7 @@ window.onload = ()=>{
 	{
 		closeNavs();
 		document.getElementById(bookmarkTarget).scrollIntoView();
-		window.scrollBy(0, -navTop.offsetHeight);
+		window.scrollBy(0, -navTop.offsetHeight - parseInt(defaultFontSize));
 	}
 
 	function removeBookmark()
@@ -587,6 +597,7 @@ window.onload = ()=>{
 	{
 		if(load)
 		{
+			loadingOverlay.style.display = 'block';
 			loadingOverlay.style.opacity = opacity;
 			loadingOverlay.style.visibility = 'visible';
 		}
@@ -594,6 +605,7 @@ window.onload = ()=>{
 		{
 			loadingOverlay.style.opacity = '0';
 			loadingOverlay.style.visibility = 'hidden';
+			loadingOverlay.style.display = 'none';
 		}
 
 	}
