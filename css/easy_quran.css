@@ -273,6 +273,7 @@ i {
 	font-family: 'rb-icons', sans-serif;
 	font-size: .5em;
 	color: var(--set-color);
+	cursor: pointer;
 }
 /*Page info paragraph*/
 .pip {
