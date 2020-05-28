@@ -108,18 +108,18 @@ window.onload = ()=>{
 			juzAnchors[i].addEventListener('click', addBookmark, false);
 		}
 
-		// Verse anchors
-		let vaLength = verseAnchors.length
-		for(let i=0; i < vaLength; i++)
-		{
-			verseAnchors[i].addEventListener('click', addBookmark, false);
-		}
-
 		// Page anchors
 		let paLength = pageAnchors.length
 		for(let i=0; i < paLength; i++)
 		{
 			pageAnchors[i].addEventListener('click', addBookmark, false);
+		}
+
+		// Verse anchors
+		let vaLength = verseAnchors.length
+		for(let i=0; i < vaLength; i++)
+		{
+			verseAnchors[i].addEventListener('click', addBookmark, false);
 		}
 
 		// Font family List
@@ -341,13 +341,29 @@ window.onload = ()=>{
 	function addBookmark()
 	{
 		bookmarkTarget = this.id;
+		firstLetter    = bookmarkTarget.substr(0,1)
+		switch (firstLetter)
+		{
+			case 'p':
+				bookmarkType = 'page'
+				break
+			case 'j':
+				bookmarkType = 'juz'
+				break
+			case 'v':
+				bookmarkType = 'verse'
+				break
+			default:
+				bookmarkType = 'page'
+		}
 		bookmarkLabel  = bookmarkTarget.startsWith('v') ? this.dataset.label : this.textContent;
-		setBookmark(bookmarkTarget, bookmarkLabel);
+		setBookmark(bookmarkTarget, bookmarkLabel, bookmarkType);
 		localStorage.setItem('bookmarkTarget', bookmarkTarget);
 		localStorage.setItem('bookmarkLabel', bookmarkLabel);
+		localStorage.setItem('bookmarkType', bookmarkType);
 	}
 
-	function setBookmark(bookmarkTarget, bookmarkLabel)
+	function setBookmark(bookmarkTarget, bookmarkLabel, bookmarkType)
 	{
 		bookmark = document.getElementById('bookmark');
 		if(bookmark) bookmark.remove();
@@ -355,17 +371,25 @@ window.onload = ()=>{
 		newBookmark                = document.createElement('span');
 		newBookmark.id             = 'bookmark';
 		newBookmark.dataset.target = bookmarkTarget;
+		newBookmark.dataset.type   = bookmarkType;
 		newBookmarkLabel           = document.createTextNode(bookmarkLabel);
 		newBookmark.appendChild(newBookmarkLabel);
-		newBookmark.addEventListener('click', ()=>{gotoBookmark(bookmarkTarget)});
+		newBookmark.addEventListener('click', ()=>{gotoBookmark(bookmarkTarget, bookmarkType)});
 		bookmarkContainer.appendChild(newBookmark);
 	}
 
-	function gotoBookmark(bookmarkTarget)
+	function gotoBookmark(bookmarkTarget, bookmarkType)
 	{
 		closeNavs();
 		document.getElementById(bookmarkTarget).scrollIntoView();
-		window.scrollBy(0, -navTop.offsetHeight - parseInt(defaultFontSize));
+		if (bookmarkType == 'verse')
+		{
+			window.scrollBy(0, -navTop.offsetHeight - parseInt(defaultFontSize));
+		}
+		else
+		{
+			window.scrollBy(0, -navTop.offsetHeight);
+		}
 	}
 
 	function removeBookmark()
@@ -380,6 +404,7 @@ window.onload = ()=>{
 				bookmark.remove();
 				localStorage.removeItem('bookmarkTarget');
 				localStorage.removeItem('bookmarkLabel');
+				localStorage.removeItem('bookmarkType');
 			}
 		}
 	}
