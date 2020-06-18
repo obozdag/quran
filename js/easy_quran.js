@@ -30,6 +30,8 @@ window.onload = ()=>{
 	let settingsHeader      = document.getElementById('settings_header');
 	let settingsMessage     = document.getElementById('settings_message');
 	let suraList            = document.getElementById('sura_list');
+	let suraIdOrderBtn      = document.getElementById('sura_id_order');
+	let suraAzOrderBtn      = document.getElementById('sura_az_order');
 	let suraShortcutList    = document.getElementById('sura_shortcuts');
 	let topBtn              = document.getElementById('top_btn');
 
@@ -150,6 +152,10 @@ window.onload = ()=>{
 		// Sura list
 		suraList.addEventListener('change', suraToTop);
 
+		// Sura order
+		suraIdOrderBtn.addEventListener('click', ()=>{fillSuras(currentLanguage, 'id')});
+		suraAzOrderBtn.addEventListener('click', ()=>{fillSuras(currentLanguage, 'az')});
+
 		// Juz list
 		juzList.addEventListener('change', juzToTop);
 
@@ -236,6 +242,13 @@ window.onload = ()=>{
 			bgColorList.value = bgColor;
 			setBgColor(bgColor);
 		}
+
+		// Restore sura order
+		if (localStorage.getItem('sura_order'))
+		{
+			sura_order = localStorage.getItem('sura_order')
+			fillSuras(currentLanguage, sura_order)
+		}
 	}
 
 	function setLanguage(language)
@@ -312,12 +325,15 @@ window.onload = ()=>{
 		}
 	}
 
-	function fillSuras(language)
+	function fillSuras(language, order = 'id')
 	{
 		// First remove list items before adding new ones
 		while(child = suraList.lastChild){suraList.removeChild(child)}
 
-		createOptions(suraList, translations[language]['suras'], null);
+		let suras = order == 'id' ? translations[language]['suras_id_order'] : translations[language]['suras_az_order']
+		createOptions(suraList, suras, null)
+
+		localStorage.setItem('sura_order', order)
 	}
 
 	function fillShortcuts(language)
