@@ -10,6 +10,7 @@
 	font-family:"rb-icons";
 	src:url(fonts/rb_icons.ttf);
 }
+.flex {display: flex; justify-content: space-between;}
 .rb {
 	font-family: 'rb-icons' !important;
 	speak: none;
