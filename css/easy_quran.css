@@ -215,7 +215,7 @@ i {
 	border: 1px solid rgba(200, 200, 200, .5);
 }
 #sura_shortcuts li {
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 	cursor: pointer;
 }
 .goto_page_container {
@@ -422,6 +422,9 @@ footer a {
 #loading_content p
  {
 	margin-bottom: 1rem;
+}
+.mr-1 {
+	margin-right: 5px;
 }
 @media print {
 	.container {
