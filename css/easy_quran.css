@@ -426,6 +426,14 @@ footer a {
 .mr-1 {
 	margin-right: 5px;
 }
+.icons li {
+	display: grid;
+	grid-template-columns: 60px 1fr;
+	grid-gap: 1rem;
+}
+.icons .icon {
+	text-align: right;
+}
 @media print {
 	.container {
 		display: block;
