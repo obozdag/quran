@@ -1,4 +1,4 @@
-var cacheName = 'EasyQuran v1.92.7'
+var cacheName = 'EasyQuran v1.92.8'
 var staticContentToCache = [
 	'/',
 	'index.html',
