@@ -434,6 +434,10 @@ footer a {
 .icons .icon {
 	text-align: right;
 }
+#reset_btn {
+	width: 80px;
+	justify-self: end;
+}
 @media print {
 	.container {
 		display: block;
