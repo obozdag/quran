@@ -439,19 +439,23 @@ window.onload = ()=>{
 
 	function resetSettings()
 	{
-		// Reset selection list values
-		fontFamilyList.value = defaultFontFamily;
-		fontSizeList.value   = defaultFontSize;
-		colorList.value      = defaultColor;
-		bgColorList.value    = defaultBgColor;
-		languageList.value   = defaultLanguage;
+		let answer = confirm(translations[currentLanguage]['confirm_reset']);
+		if (answer)
+		{
+			// Reset selection list values
+			fontFamilyList.value = defaultFontFamily;
+			fontSizeList.value   = defaultFontSize;
+			colorList.value      = defaultColor;
+			bgColorList.value    = defaultBgColor;
+			languageList.value   = defaultLanguage;
 
-		// Propagate reset settings
-		fontFamilyList.dispatchEvent(new Event('change', {'bubbles': true}));
-		fontSizeList.dispatchEvent(new Event('change', {'bubbles': true}));
-		colorList.dispatchEvent(new Event('change', {'bubbles': true}));
-		bgColorList.dispatchEvent(new Event('change', {'bubbles': true}));
-		languageList.dispatchEvent(new Event('change', {'bubbles': true}));
+			// Propagate reset settings
+			fontFamilyList.dispatchEvent(new Event('change', {'bubbles': true}));
+			fontSizeList.dispatchEvent(new Event('change', {'bubbles': true}));
+			colorList.dispatchEvent(new Event('change', {'bubbles': true}));
+			bgColorList.dispatchEvent(new Event('change', {'bubbles': true}));
+			languageList.dispatchEvent(new Event('change', {'bubbles': true}));
+		}
 	}
 
 	function closeNavs()
