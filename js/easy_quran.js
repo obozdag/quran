@@ -36,7 +36,7 @@ window.onload = ()=>{
 	let topBtn              = document.getElementById('top_btn');
 
 	// Anchors and infos in quran
-	let verseAnchors        = document.querySelectorAll('.vn');
+	// let verseAnchors        = document.querySelectorAll('.vn');
 	let juzAnchors          = document.querySelectorAll('.ca');
 	let pageAnchors         = document.querySelectorAll('.pa');
 	let pageInfoBtns        = document.querySelectorAll('.ib');
@@ -117,12 +117,12 @@ window.onload = ()=>{
 			pageAnchors[i].addEventListener('click', addBookmark, false);
 		}
 
-		// Verse anchors
-		let vaLength = verseAnchors.length
-		for(let i=0; i < vaLength; i++)
-		{
-			verseAnchors[i].addEventListener('click', addBookmark, false);
-		}
+		// // Verse anchors
+		// let vaLength = verseAnchors.length
+		// for(let i=0; i < vaLength; i++)
+		// {
+		// 	verseAnchors[i].addEventListener('click', addBookmark, false);
+		// }
 
 		// Font family List
 		fontFamilyList.addEventListener('change', ()=>{
@@ -366,9 +366,9 @@ window.onload = ()=>{
 			case 'j':
 				bookmarkType = 'juz'
 				break
-			case 'v':
-				bookmarkType = 'verse'
-				break
+			// case 'v':
+			// 	bookmarkType = 'verse'
+			// 	break
 			default:
 				bookmarkType = 'page'
 		}
@@ -394,18 +394,19 @@ window.onload = ()=>{
 		bookmarkContainer.appendChild(newBookmark);
 	}
 
-	function gotoBookmark(bookmarkTarget, bookmarkType)
+	function gotoBookmark(bookmarkTarget, bookmarkType = "page")
 	{
 		closeNavs();
 		document.getElementById(bookmarkTarget).scrollIntoView();
-		if (bookmarkType == 'verse')
-		{
-			window.scrollBy(0, -navTop.offsetHeight - parseInt(defaultFontSize));
-		}
-		else
-		{
+
+		// if (bookmarkType == 'verse')
+		// {
+		// 	window.scrollBy(0, -navTop.offsetHeight - parseInt(defaultFontSize));
+		// }
+		// else
+		// {
 			window.scrollBy(0, -navTop.offsetHeight);
-		}
+		// }
 	}
 
 	function removeBookmark()
