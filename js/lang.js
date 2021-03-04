@@ -256,6 +256,7 @@ translations = {
 		's114':'Nâs 114 (6)',
 		},
 	'sura_shortcuts'         : {
+		's18':"18 Kehf",
 		's36':"36 Yâsin",
 		's44':"44 Duhân",
 		's48':"48 Fetih",
@@ -526,6 +527,7 @@ translations = {
 		's114':'An-Nas 114 (6)',
 		},
 	'sura_shortcuts'         : {
+		's18':'18 Al-Kahf',
 		's36':"36 Ya-Seen",
 		's44':"44 Ad-Dukhan",
 		's48':"48 Al-Fath",
