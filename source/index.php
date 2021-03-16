@@ -15,17 +15,10 @@
 	<link rel="manifest" href="easy_quran.json">
 </head>
 <body>
-	<div id="loading_overlay">
+	<div id="loading_overlay" style="display: none;">
 		<div id="loading_content">
 			<h3>Easy Quran</h3>
-			<div class="loader">
-				<svg version="1.1"  x="0px" y="0px" width="100px" height="100px" viewBox="0 0 50 50" >
-					<path opacity="0.2" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946 s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634 c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z" />
-					<path  d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0 C22.32,8.481,24.301,9.057,26.013,10.047z">
-						<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"/>
-					</path>
-				</svg>
-			</div>
+			<p><img src="css/icons/loading.gif"></p>
 			<p>Loading...</p>
 			<p>quran.fklavye.net</p>
 		</div>
@@ -43,16 +36,20 @@
 		<div class="settings">
 			<div class="row">
 				<label id="sura_list_label"></label>
-				<select id="sura_list">
-					<?php
-					// foreach ($rows_sura as $row):
-					// 	$id     = $row['id'];
-					// 	$sajdah = $row['sajdah'] ? '*': '';
-					// 	$option = $row['en'].' '.$id.' ('.$row['verses'].')'.$sajdah;
-					// 	echo "<option value=\"s{$id}\">{$option}</option>";
-					// endforeach;
-					?>
-				</select>
+				<div class="flex">
+					<select id="sura_list" class="mr-1">
+						<?php
+						// foreach ($rows_sura as $row):
+						// 	$id     = $row['id'];
+						// 	$sajdah = $row['sajdah'] ? '*': '';
+						// 	$option = $row['en'].' '.$id.' ('.$row['verses'].')'.$sajdah;
+						// 	echo "<option value=\"s{$id}\">{$option}</option>\n";
+						// endforeach;
+						?>
+					</select>
+					<button type="button" class="btn btn_nav mr-1" id="sura_az_order" title="Order by Sura Name"><i class="rb">A</i></button>
+					<button type="button" class="btn btn_nav" id="sura_id_order"><i class="rb" title="Order by Sura Number">B</i></button>
+				</div>
 			</div>
 			<div class="row">
 				<label id="juz_list_label"></label>
@@ -151,7 +148,7 @@
 				endif; ?>
 				<?php
 				$sajdah_class = $row['sajdah'] ? ' class="sajdah"' : ''; ?>
-				<i class="vn">(<?= $row['verse_no'] ?>)</i><i<?= $sajdah_class ?>><?= $row['verse'] ?></i>
+				<i class="vn" id="v<?= $row['id'] ?>" data-label = "<?= $page_anchor_label.' a '.$row['verse_no'] ?>">(<?= $row['verse_no'] ?>)</i><i<?= $sajdah_class ?>><?= $row['verse'] ?></i>
 				<?php
 			endforeach; ?>
 		</div>
