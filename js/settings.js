@@ -40,6 +40,14 @@ colors = {
 	'seagreen'       : 'Seagreen',
 	'steelblue'      : 'Steelblue',
 	'teal'           : 'Teal',
+	'#3a86ff'        : 'Nylonblue',
+	'#863dec'        : 'Overreact',
+	'#ff006e'        : 'Respark',
+	'#00b4be'        : 'Babeblue',
+	'#c77dff'        : 'Venomoth',
+	'#f160b7'        : 'Heavenlylove',
+	'#00b7f4'        : 'Summervacation',
+	'#00f5d4'        : 'Sunshinyblue',
 };
 
 bgColors = {
@@ -61,4 +69,12 @@ bgColors = {
 	'mintcream'      : 'Mintcream',
 	'seashell'       : 'Seashell',
 	'white'          : 'White',
+	'#3a86ff'        : 'Nylonblue',
+	'#863dec'        : 'Overreact',
+	'#ff006e'        : 'Respark',
+	'#00b4be'        : 'Babeblue',
+	'#c77dff'        : 'Venomoth',
+	'#f160b7'        : 'Heavenlylove',
+	'#00b7f4'        : 'Summervacation',
+	'#00f5d4'        : 'Sunshinyblue',
 };
